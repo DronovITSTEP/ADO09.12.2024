@@ -19,7 +19,7 @@ namespace ADO09._12._2024.Part3
                     "Initial Catalog=StudentData;");
                 conn.Open();
 
-                SqlCommand command = 
+                SqlCommand command =
                     new SqlCommand("getFullNameStudent", conn);
                 command.CommandType = System.Data
                                         .CommandType.StoredProcedure;
@@ -27,8 +27,8 @@ namespace ADO09._12._2024.Part3
                 command.Parameters.Add("@id", System.Data.SqlDbType.Int)
                     .Value = 2;
 
-                SqlParameter outputFullName = new SqlParameter("@fullname", 
-                    System.Data.SqlDbType.NVarChar);
+                SqlParameter outputFullName = new SqlParameter("@fullname",
+                    System.Data.SqlDbType.NVarChar, 50);
                 outputFullName.Direction = System.Data.ParameterDirection.Output;
 
                 command.Parameters.Add(outputFullName);
@@ -38,6 +38,8 @@ namespace ADO09._12._2024.Part3
                 Console
                     .WriteLine(command.Parameters["@fullname"]
                                 .Value.ToString());
+
+
             }
             finally
             {
